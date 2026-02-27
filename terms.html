@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Refund Policy &mdash; Tilth</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0f0f0f;
+      --bg-card:   #1a1a1a;
+      --border:    #2a2a2a;
+      --text:      #e8e8e8;
+      --muted:     #888;
+      --accent:    #00c896;
+      --accent-dk: #00a87e;
+      --font:      -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .header-back {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .header-back a { color: var(--accent); }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Draft notice ── */
+    .draft-notice {
+      background: #1a1400;
+      border: 1px solid #3a3000;
+      border-radius: 6px;
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      color: #c8aa44;
+      margin: 32px 0 0;
+      text-align: center;
+    }
+
+    /* ── Document header ── */
+    .doc-header {
+      padding: 52px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-header h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .doc-meta {
+      font-size: 0.88rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .doc-meta strong { color: var(--text); }
+
+    /* ── Body content ── */
+    .doc-body {
+      padding: 48px 0 80px;
+    }
+
+    .doc-section {
+      margin-bottom: 52px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 28px 0 12px;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    p strong { color: var(--text); }
+
+    ul {
+      margin: 0 0 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    li {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    li strong { color: var(--text); }
+
+    .tier-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+
+    .tier-price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .tier-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .tier-section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 16px 0 8px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    .highlight-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 8px;
+    }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      header .container {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .doc-header { padding: 36px 0 28px; }
+      .tier-card { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="container">
+      <a class="logo" href="index.html">Tilth<span>.</span></a>
+      <div class="header-back">
+        <a href="index.html">&larr; Back to tilth.dev</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Document Header ── -->
+  <div class="doc-header">
+    <div class="container">
+      <h1>Service Agreement &amp; Terms</h1>
+      <div class="doc-meta">
+        <div><strong>Version:</strong> 1.0 &mdash; Draft for Board Review</div>
+        <div><strong>Effective:</strong> Pending Board approval</div>
+        <div><strong>Applies to:</strong> All services sold via Contra, tilth.dev, or direct invoice</div>
+      </div>
+      <div class="draft-notice">
+        This document is a working draft pending Board approval. It is not yet in effect.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Body ── -->
+  <div class="doc-body">
+    <div class="container">
+
+      <!-- Who We Are -->
+      <div class="doc-section">
+        <h2>Who We Are</h2>
+        <p>Tilth Automation (&ldquo;Tilth,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) provides workflow analysis, automation design, and implementation services to freelancers, virtual assistants, bookkeepers, and small service businesses. Services are delivered by human practitioners supported by AI tooling.</p>
+      </div>
+
+      <!-- Service Descriptions -->
+      <div class="doc-section">
+        <h2>Service Descriptions &amp; Deliverables</h2>
+
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <div class="tier-price">$99</div>
+          <div class="tier-name">Tier 1: AI Workflow Scan</div>
+          <p><strong>What it is:</strong> A 30-minute discovery session plus a written report identifying your top automation opportunities.</p>
+
+          <div class="tier-section-label">What you get</div>
+          <ul>
+            <li>1 &times; 30-minute video or voice call (or async Loom walkthrough if preferred)</li>
+            <li>Written report (PDF or Google Doc) covering:
+              <ul style="margin-top:6px">
+                <li>Summary of your current workflow as described</li>
+                <li>3 specific automation opportunities, ranked by impact and effort</li>
+                <li>Tool recommendations for each opportunity (with cost estimates)</li>
+                <li>Clear next steps you can act on immediately</li>
+              </ul>
+            </li>
+            <li>Delivered within <strong>48 hours</strong> of your completed onboarding questionnaire</li>
+          </ul>
+
+          <div class="tier-section-label">What is NOT included</div>
+          <ul>
+            <li>Implementation of any automations</li>
+            <li>Software accounts or subscriptions (costs are yours)</li>
+            <li>Ongoing support beyond 7 days from delivery</li>
+            <li>Revisions beyond one round of clarifying questions</li>
+          </ul>
+
+          <div class="tier-section-label">What we need from you</div>
+          <ul>
+            <li>Complete the onboarding questionnaire within 3 business days of purchase</li>
+            <li>Be available for the 30-minute session within 5 business days of purchase</li>
+            <li>Describe your current workflow honestly and in reasonable detail</li>
+          </ul>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card">
+          <div class="tier-price">$299</div>
+          <div class="tier-name">Tier 2: Automation Sprint</div>
+          <p><strong>What it is:</strong> One focused week to build and deliver one working automation.</p>
+
+          <div class="tier-section-label">What you get</div>
+          <ul>
+            <li>Workflow mapping session (30&ndash;45 min, video call or async)</li>
+            <li>Design of one automation end-to-end</li>
+            <li>Implementation using tools you already have access to (or low-cost alternatives we recommend)</li>
+            <li>Testing and verification that the automation works as described</li>
+            <li>Handoff document explaining how to use, monitor, and troubleshoot it</li>
+            <li>7-day post-delivery support window (bug fixes only &mdash; email/async)</li>
+            <li>Delivered within <strong>7 business days</strong> of your completed onboarding questionnaire</li>
+          </ul>
+
+          <div class="tier-section-label">What is NOT included</div>
+          <ul>
+            <li>Multiple automations (one workflow per engagement)</li>
+            <li>Software subscriptions or API costs (costs are yours)</li>
+            <li>Training sessions beyond the handoff document</li>
+            <li>New features or scope changes after work has begun</li>
+            <li>Ongoing maintenance after the 7-day support window</li>
+          </ul>
+
+          <div class="tier-section-label">What we need from you</div>
+          <ul>
+            <li>Complete onboarding questionnaire within 2 business days of purchase</li>
+            <li>Respond to clarifying questions within 1 business day during the engagement</li>
+            <li>Provide access credentials or trial accounts for the tools involved</li>
+            <li>Approve or request changes within 48 hours of delivery (silence = accepted)</li>
+          </ul>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card">
+          <div class="tier-price">$499</div>
+          <div class="tier-name">Tier 3: Full Automation Build</div>
+          <p><strong>What it is:</strong> Full design, build, test, and documentation of a complete automation system covering your core operational workflow.</p>
+
+          <div class="tier-section-label">What you get</div>
+          <ul>
+            <li>Comprehensive workflow audit and process map</li>
+            <li>Architecture design document (what gets automated, in what order, with what tools)</li>
+            <li>Full implementation across your workflow (intake &rarr; delivery or equivalent scope)</li>
+            <li>Testing against real or representative data</li>
+            <li>Documentation package: how it works, how to maintain it, how to troubleshoot it</li>
+            <li>14-day post-delivery support window (bug fixes only &mdash; email/async)</li>
+            <li>Delivered within <strong>10 business days</strong> of your completed onboarding questionnaire</li>
+          </ul>
+
+          <div class="tier-section-label">What is NOT included</div>
+          <ul>
+            <li>Unlimited scope (&ldquo;automate everything&rdquo;) &mdash; scope is defined during the audit call and locked before work begins</li>
+            <li>Software subscriptions, API costs, or tool licenses (costs are yours)</li>
+            <li>Custom software development (we automate using existing tools &mdash; Zapier, Make, n8n, Airtable, etc.)</li>
+            <li>Ongoing maintenance after the 14-day support window</li>
+            <li>Training sessions beyond the documentation package (available as add-on)</li>
+          </ul>
+
+          <div class="tier-section-label">What we need from you</div>
+          <ul>
+            <li>Complete onboarding questionnaire within 2 business days of purchase</li>
+            <li>Attend the scope definition call (30&ndash;60 min) &mdash; work does not begin until scope is agreed in writing</li>
+            <li>Respond to questions within 1 business day during the engagement</li>
+            <li>Provide access to all relevant tools and systems</li>
+            <li>Review and approve scope document before work begins</li>
+            <li>Approve or request changes within 48 hours of delivery (silence = accepted)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Refund Policy -->
+      <div class="doc-section">
+        <h2>Refund Policy</h2>
+        <p>We believe in our work. If we fail to deliver, you get your money back. No games.</p>
+
+        <div class="highlight-box">
+          <p><strong>Short version:</strong> Full refund if we fail to deliver on time or the work doesn&rsquo;t match what was agreed. 50% refund if you cancel after work has begun.</p>
+        </div>
+
+        <h4>Full Refund &mdash; You are entitled to a full refund if:</h4>
+        <ul>
+          <li>We do not deliver within the stated timeline (from completed questionnaire), unless delay was caused by your unresponsiveness</li>
+          <li>The deliverable does not materially match what was described and agreed upon in writing</li>
+          <li>We are unable to begin work due to factors within our control</li>
+        </ul>
+
+        <h4>Partial Refund &mdash; A 50% refund applies if:</h4>
+        <ul>
+          <li>You cancel after work has begun but before delivery</li>
+          <li>The deliverable partially meets the agreed scope and we cannot resolve the gap within one revision cycle</li>
+        </ul>
+
+        <h4>No Refund &mdash; Refunds are not available if:</h4>
+        <ul>
+          <li>You chose not to implement the recommendations (Tier 1) or use the deliverable (Tiers 2/3)</li>
+          <li>The automation worked as designed but your underlying process changed</li>
+          <li>Delays were caused by your failure to respond, provide access, or complete the onboarding questionnaire within the stated windows</li>
+          <li>You approved the scope document and the delivered work matches that scope</li>
+        </ul>
+
+        <h4>How to Request a Refund</h4>
+        <p>Email us at <a href="mailto:admin@tilth.dev">admin@tilth.dev</a> within 14 days of delivery (or expected delivery date, if we are late). Describe the gap between what was promised and what was delivered. We will respond within 2 business days. If we owe you a refund, it is processed within 5 business days.</p>
+      </div>
+
+      <!-- Customer Obligations -->
+      <div class="doc-section">
+        <h2>Customer Obligations</h2>
+        <p>You agree to:</p>
+        <ul>
+          <li>Complete onboarding materials promptly (timelines above)</li>
+          <li>Respond to questions in a timely way during active engagements</li>
+          <li>Provide accurate information about your workflows and tools</li>
+          <li>Provide necessary access (tool credentials, accounts) before work begins</li>
+          <li>Review deliverables and provide feedback or approval within 48 hours</li>
+        </ul>
+        <p>Failure to meet these obligations may extend delivery timelines. Repeated unresponsiveness (5+ business days) without notice may result in project cancellation with a 50% refund.</p>
+      </div>
+
+      <!-- Scope Control -->
+      <div class="doc-section">
+        <h2>Scope Control</h2>
+        <p>For Tiers 2 and 3, scope is defined and agreed upon in writing before work begins. Requests to expand scope during an engagement will be evaluated and may require a separate engagement. We will not silently absorb scope creep &mdash; we&rsquo;ll flag it and agree on how to handle it before proceeding.</p>
+      </div>
+
+      <!-- Intellectual Property -->
+      <div class="doc-section">
+        <h2>Intellectual Property</h2>
+        <ul>
+          <li>Any automation built for you uses your accounts, your data, and (where applicable) your tool licenses. <strong>You own the output.</strong></li>
+          <li>We retain no rights to your data or workflows.</li>
+          <li>We may reference the type of work performed (e.g., &ldquo;built a client intake automation for a VA firm&rdquo;) as a portfolio example, without identifying you by name, unless you give explicit permission for a named case study.</li>
+        </ul>
+      </div>
+
+      <!-- Data & Confidentiality -->
+      <div class="doc-section">
+        <h2>Data &amp; Confidentiality</h2>
+        <p>We treat your workflow data and business information as confidential. We do not share it with third parties. We use it only to deliver your engagement.</p>
+      </div>
+
+      <!-- Limitation of Liability -->
+      <div class="doc-section">
+        <h2>Limitation of Liability</h2>
+        <p>Our liability is limited to the amount you paid us for the engagement in question. We are not liable for:</p>
+        <ul>
+          <li>Business losses, lost revenue, or downstream consequences of automation errors</li>
+          <li>Third-party tool outages, pricing changes, or policy changes</li>
+          <li>Errors in data you provided</li>
+        </ul>
+        <p>We build automations in good faith using professional judgment. We test them. But no automation is guaranteed to work perfectly forever &mdash; tools change, workflows evolve.</p>
+      </div>
+
+      <!-- Disputes -->
+      <div class="doc-section">
+        <h2>Disputes</h2>
+        <p>We prefer to resolve disputes directly. Email <a href="mailto:admin@tilth.dev">admin@tilth.dev</a>. If we can&rsquo;t resolve it in good faith, disputes are governed by the laws of the State of Texas.</p>
+      </div>
+
+      <!-- Changes -->
+      <div class="doc-section">
+        <h2>Changes to These Terms</h2>
+        <p>We may update these terms. Significant changes will be communicated to active clients. Your purchase constitutes acceptance of the terms in effect at the time of purchase.</p>
+      </div>
+
+      <!-- Questions -->
+      <div class="doc-section">
+        <h2>Questions?</h2>
+        <p>Email <a href="mailto:admin@tilth.dev">admin@tilth.dev</a>. We answer within 1 business day.</p>
+      </div>
+
+    </div><!-- /.container -->
+  </div><!-- /.doc-body -->
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <a href="index.html">&larr; Tilth.dev</a> &nbsp;|&nbsp; <a href="mailto:hello@tilth.dev">hello@tilth.dev</a> &nbsp;|&nbsp; Built by humans, powered by AI.
+    </div>
+  </footer>
+
+</body>
+</html>

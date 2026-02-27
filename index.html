@@ -284,6 +284,29 @@
       color: var(--accent);
     }
 
+    /* ── Refund Policy ── */
+    .refund-policy {
+      padding: 52px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .refund-policy .section-label {
+      margin-bottom: 16px;
+    }
+
+    .refund-text {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .refund-text strong {
+      color: var(--text);
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .hero {
@@ -344,21 +367,21 @@
           <div class="card-price">$99</div>
           <div class="card-name">AI Workflow Scan</div>
           <div class="card-divider"></div>
-          <div class="card-desc">60-minute working session + written report of your top 3 automation opportunities. No implementation. Just clarity.</div>
+          <div class="card-desc">30-min discovery call + written report with 3 automation opportunities ranked by impact. Delivered within 48 hours of your onboarding questionnaire.</div>
         </div>
 
         <div class="card">
           <div class="card-price">$299</div>
           <div class="card-name">Automation Sprint</div>
           <div class="card-divider"></div>
-          <div class="card-desc">We implement 1–2 specific automations (up to 4 hours of build work). Includes setup, testing, and documentation.</div>
+          <div class="card-desc">One focused week: scope &rarr; build &rarr; test &rarr; handoff. One complete automation, fully documented, with 7-day bug support.</div>
         </div>
 
         <div class="card">
           <div class="card-price">$499</div>
-          <div class="card-name">Full Build</div>
+          <div class="card-name">Full Automation Build</div>
           <div class="card-divider"></div>
-          <div class="card-desc">Complete workflow map + implement up to 3 automations + 30 days of async support. Best for businesses ready to commit to automation.</div>
+          <div class="card-desc">Comprehensive workflow audit + full implementation across your core workflow. Documented, tested, 14-day bug support.</div>
         </div>
 
       </div>
@@ -405,10 +428,22 @@
     </div>
   </section>
 
+  <!-- ── Refund Policy ── -->
+  <section class="refund-policy">
+    <div class="container">
+      <div class="section-label">Our Guarantee</div>
+      <p class="refund-text">
+        <strong>Full refund</strong> if we fail to deliver on time or the work doesn&rsquo;t match what was agreed.
+        <strong>50% refund</strong> if you cancel after work has begun.
+        &nbsp;<a href="terms.html">Full terms &rarr;</a>
+      </p>
+    </div>
+  </section>
+
   <!-- ── Footer ── -->
   <footer>
     <div class="container">
-      Tilth &nbsp;|&nbsp; <a href="mailto:hello@tilth.dev">hello@tilth.dev</a> &nbsp;|&nbsp; Built by humans, powered by AI.
+      Tilth &nbsp;|&nbsp; <a href="mailto:hello@tilth.dev">hello@tilth.dev</a> &nbsp;|&nbsp; <a href="terms.html">Terms &amp; Refund Policy</a> &nbsp;|&nbsp; Built by humans, powered by AI.
     </div>
   </footer>
 
