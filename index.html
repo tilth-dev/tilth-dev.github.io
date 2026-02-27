@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tilth — AI Workflow Services</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0f0f0f;
+      --bg-card:   #1a1a1a;
+      --border:    #2a2a2a;
+      --text:      #e8e8e8;
+      --muted:     #888;
+      --accent:    #00c896;
+      --accent-dk: #00a87e;
+      --font:      -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .header-contact {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .header-contact a {
+      color: var(--accent);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 96px 0 80px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: #fff;
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f0f0f;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 6px;
+      letter-spacing: 0.01em;
+      transition: background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dk);
+      text-decoration: none;
+      color: #0f0f0f;
+    }
+
+    /* ── Section titles ── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    /* ── Services ── */
+    .services {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .services-header {
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.15s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+    }
+
+    .card-price {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+
+    .card-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: -4px;
+    }
+
+    .card-divider {
+      width: 32px;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      margin: 4px 0;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* ── How It Works ── */
+    .how {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .how-header {
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      opacity: 0.8;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .step-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── CTA Band ── */
+    .cta-band {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cta-band p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 64px 0 56px;
+      }
+
+      header .container {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="container">
+      <div class="logo">Tilth<span>.</span></div>
+      <div class="header-contact">
+        <a href="mailto:contact@tilth.dev">contact@tilth.dev</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="container">
+      <h1>We automate your manual workflows so you can focus on the work that actually matters.</h1>
+      <p>AI workflow audits and automation builds for solopreneurs and small businesses. Fixed-price packages. No retainer required to start.</p>
+      <a class="btn-primary" href="mailto:contact@tilth.dev?subject=Discovery Call Request">Book a Free 30-Min Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- ── Services ── -->
+  <section class="services">
+    <div class="container">
+      <div class="services-header">
+        <div class="section-label">Services</div>
+        <div class="section-title">Fixed-price packages. No surprises.</div>
+      </div>
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-price">$99</div>
+          <div class="card-name">AI Workflow Scan</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">60-minute working session + written report of your top 3 automation opportunities. No implementation. Just clarity.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-price">$299</div>
+          <div class="card-name">Automation Sprint</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">We implement 1–2 specific automations (up to 4 hours of build work). Includes setup, testing, and documentation.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-price">$499</div>
+          <div class="card-name">Full Build</div>
+          <div class="card-divider"></div>
+          <div class="card-desc">Complete workflow map + implement up to 3 automations + 30 days of async support. Best for businesses ready to commit to automation.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="how">
+    <div class="container">
+      <div class="how-header">
+        <div class="section-label">Process</div>
+        <div class="section-title">How it works</div>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-title">Book a free discovery call</div>
+          <div class="step-desc">Tell us what's taking too long. No pitch. No pressure. Just a conversation about where your time is going.</div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-title">We map your workflows</div>
+          <div class="step-desc">We identify what AI can automate in your specific business — not generic advice, but a clear plan built around your actual work.</div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-title">We build it</div>
+          <div class="step-desc">You get your time back. Everything is documented so you can run it yourself — or hand it off without explanation.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Band ── -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready to stop doing it manually?</h2>
+      <p>The first call is free. No commitment, no pitch deck.</p>
+      <a class="btn-primary" href="mailto:contact@tilth.dev?subject=Discovery Call Request">Book a Free 30-Min Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      Tilth &nbsp;|&nbsp; <a href="mailto:contact@tilth.dev">contact@tilth.dev</a> &nbsp;|&nbsp; Built by humans, powered by AI.
+    </div>
+  </footer>
+
+</body>
+</html>
