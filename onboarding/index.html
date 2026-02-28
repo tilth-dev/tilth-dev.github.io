@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarding Questionnaire &mdash; Tilth</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0f0f0f;
+      --card:    #161616;
+      --border:  #252525;
+      --text:    #e8e8e8;
+      --muted:   #777;
+      --accent:  #00c896;
+      --red:     #e05050;
+      --font:    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* -- Header -- */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+
+    /* -- Layout -- */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* -- Intro -- */
+    .intro {
+      padding: 52px 0 40px;
+    }
+    .intro h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .intro p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .intro p + p { margin-top: 10px; }
+
+    /* -- Form -- */
+    form { padding-bottom: 80px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 48px 0 24px;
+    }
+
+    .field {
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    label .q-num {
+      color: var(--muted);
+      font-weight: 400;
+      margin-right: 4px;
+    }
+
+    label .optional {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    .hint {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    input[type=text],
+    input[type=email],
+    textarea,
+    select {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type=text]:focus,
+    input[type=email]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    /* Checkbox group */
+    .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .check-item input[type=checkbox] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .check-item span {
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .radio-item input[type=radio] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .radio-item span {
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* -- Submit -- */
+    .submit-area {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .submit-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .submit-note strong { color: var(--text); }
+
+    button[type=submit] {
+      background: var(--accent);
+      color: #000;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 14px 36px;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      letter-spacing: -0.01em;
+    }
+
+    button[type=submit]:hover { opacity: 0.88; }
+    button[type=submit]:active { transform: scale(0.98); }
+
+    /* -- Error state -- */
+    .field.error input,
+    .field.error textarea,
+    .field.error select {
+      border-color: var(--red);
+    }
+
+    .field-error {
+      font-size: 0.8rem;
+      color: var(--red);
+      margin-top: 5px;
+    }
+
+    /* -- Success banner -- */
+    #success-banner {
+      display: none;
+      background: #0a2a1e;
+      border: 1px solid #1a6040;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+
+    #success-banner h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    #success-banner p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* -- Footer -- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 560px) {
+      .intro { padding: 36px 0 28px; }
+      button[type=submit] { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a class="logo" href="/">Tilth<span>.</span></a>
+    </div>
+  </header>
+
+  <div class="intro">
+    <div class="container">
+      <h1>Onboarding Questionnaire</h1>
+      <p>Before your first call, we need to understand your business and where you're losing time. This takes about 5 minutes. The more specific you are, the more useful your session will be.</p>
+      <p>Your answers go directly to <strong>hello@tilth.dev</strong>. We'll review them before we talk.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div id="success-banner">
+      <h2>Answers sent &mdash; thank you.</h2>
+      <p>Your email client opened with your answers pre-filled. If it didn't open, email <a href="mailto:hello@tilth.dev">hello@tilth.dev</a> directly and paste your answers. We'll be in touch within 1 business day to schedule your call.</p>
+    </div>
+
+    <form id="oq" novalidate>
+
+      <!-- -- Section 1: Your Business -- -->
+      <div class="section-label">Your business</div>
+
+      <div class="field" id="f1">
+        <label for="q1"><span class="q-num">1.</span> Your name and business name</label>
+        <input type="text" id="q1" name="name_and_business" placeholder="e.g. Sarah Chen, Chen Virtual Services" />
+        <div class="field-error" id="e1"></div>
+      </div>
+
+      <div class="field" id="f2">
+        <label for="q2"><span class="q-num">2.</span> What kind of work do you do?</label>
+        <select id="q2" name="work_type">
+          <option value="">Select one&hellip;</option>
+          <option value="Virtual Assistant">Virtual Assistant</option>
+          <option value="Bookkeeper">Bookkeeper</option>
+          <option value="Copywriter">Copywriter / Content creator</option>
+          <option value="Coach / Consultant">Coach / Consultant</option>
+          <option value="Designer">Designer</option>
+          <option value="Social Media Manager">Social Media Manager</option>
+          <option value="Other">Other (describe in Q10)</option>
+        </select>
+        <div class="field-error" id="e2"></div>
+      </div>
+
+      <div class="field" id="f3">
+        <label for="q3"><span class="q-num">3.</span> How many hours per week do you spend on repetitive tasks?</label>
+        <div class="hint">Tasks you do over and over: onboarding clients, sending follow-ups, copying data between tools, etc.</div>
+        <select id="q3" name="repetitive_hours">
+          <option value="">Select one&hellip;</option>
+          <option value="Less than 2 hours">Less than 2 hours</option>
+          <option value="2-5 hours">2&ndash;5 hours</option>
+          <option value="5-10 hours">5&ndash;10 hours</option>
+          <option value="10+ hours">10+ hours</option>
+        </select>
+        <div class="field-error" id="e3"></div>
+      </div>
+
+      <div class="field" id="f4">
+        <label for="q4"><span class="q-num">4.</span> What are your top 2&ndash;3 repetitive tasks?</label>
+        <div class="hint">Plain English is fine. e.g. "Every new client I manually copy their info into my spreadsheet, send a welcome email, and create a folder in Drive."</div>
+        <textarea id="q4" name="repetitive_tasks" placeholder="Describe what you do over and over each week..."></textarea>
+        <div class="field-error" id="e4"></div>
+      </div>
+
+      <!-- -- Section 2: Your Tools -- -->
+      <div class="section-label">Your tools</div>
+
+      <div class="field" id="f5">
+        <label><span class="q-num">5.</span> What tools do you currently use?</label>
+        <div class="hint">Check everything that applies.</div>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="tools" value="Google Workspace (Gmail, Drive, Docs, Sheets)" /><span>Google Workspace (Gmail, Drive, Docs, Sheets)</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Microsoft 365" /><span>Microsoft 365</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="HoneyBook" /><span>HoneyBook</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Dubsado" /><span>Dubsado</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="QuickBooks" /><span>QuickBooks</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="FreshBooks" /><span>FreshBooks</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Notion" /><span>Notion</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Airtable" /><span>Airtable</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Trello or Asana" /><span>Trello or Asana</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Zapier" /><span>Zapier</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Make (Integromat)" /><span>Make (Integromat)</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Calendly" /><span>Calendly</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Slack" /><span>Slack</span></label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Other"><span>Other &mdash; list in Q10</span></label>
+        </div>
+      </div>
+
+      <div class="field" id="f6">
+        <label for="q6"><span class="q-num">6.</span> Have you tried any automation before?</label>
+        <div class="hint">If yes, what did you try and why didn't it stick?</div>
+        <div class="radio-group" style="margin-bottom:12px">
+          <label class="radio-item"><input type="radio" name="prior_automation" value="No, never tried" /><span>No, never tried</span></label>
+          <label class="radio-item"><input type="radio" name="prior_automation" value="Yes, tried and it worked" /><span>Yes, and it worked</span></label>
+          <label class="radio-item"><input type="radio" name="prior_automation" value="Yes, tried and it didn't stick" /><span>Yes, tried but it didn't stick</span></label>
+        </div>
+        <textarea id="q6" name="prior_automation_detail" placeholder="If yes, what did you try? (optional)" style="min-height:70px"></textarea>
+      </div>
+
+      <!-- -- Section 3: Your Goal -- -->
+      <div class="section-label">Your goal</div>
+
+      <div class="field" id="f7">
+        <label for="q7"><span class="q-num">7.</span> What outcome would make this investment worthwhile?</label>
+        <div class="hint">Be specific. "Save 3 hours a week" is better than "save time." "Never manually send a welcome email again" is perfect.</div>
+        <textarea id="q7" name="desired_outcome" placeholder="If this works exactly as I hope, I will..."></textarea>
+        <div class="field-error" id="e7"></div>
+      </div>
+
+      <!-- -- Section 4: Logistics -- -->
+      <div class="section-label">Logistics</div>
+
+      <div class="field" id="f8">
+        <label for="q8"><span class="q-num">8.</span> Which package are you purchasing?</label>
+        <select id="q8" name="package">
+          <option value="">Select one&hellip;</option>
+          <option value="AI Workflow Scan ($99)">AI Workflow Scan &mdash; $99</option>
+          <option value="Automation Sprint ($299)">Automation Sprint &mdash; $299</option>
+          <option value="Full Automation Build ($499)">Full Automation Build &mdash; $499</option>
+        </select>
+        <div class="field-error" id="e8"></div>
+      </div>
+
+      <div class="field" id="f9">
+        <label for="q9"><span class="q-num">9.</span> Best email to reach you</label>
+        <input type="email" id="q9" name="contact_email" placeholder="you@yourbusiness.com" />
+        <div class="field-error" id="e9"></div>
+      </div>
+
+      <div class="field">
+        <label for="q10"><span class="q-num">10.</span> Anything else you want us to know before we start? <span class="optional">optional</span></label>
+        <textarea id="q10" name="anything_else" placeholder="Other tools, context, constraints, concerns, or questions..."></textarea>
+      </div>
+
+      <div class="submit-area">
+        <p class="submit-note">
+          Clicking <strong>Send my answers</strong> will open your email client with your responses pre-filled, addressed to <strong>hello@tilth.dev</strong>.
+          Review it and hit Send &mdash; that's it. We'll reply within 1 business day to schedule your call.
+        </p>
+        <button type="submit">Send my answers &rarr;</button>
+      </div>
+
+    </form>
+  </div>
+
+  <footer>
+    <div class="container">
+      <a href="/">Tilth.dev</a> &nbsp;|&nbsp; <a href="mailto:hello@tilth.dev">hello@tilth.dev</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var form = document.getElementById('oq');
+
+      function val(id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      }
+
+      function checkedValues(name) {
+        var boxes = document.querySelectorAll('input[name="' + name + '"]:checked');
+        return Array.from(boxes).map(function (b) { return b.value; });
+      }
+
+      function radioValue(name) {
+        var sel = document.querySelector('input[name="' + name + '"]:checked');
+        return sel ? sel.value : '';
+      }
+
+      function setError(fieldId, errId, msg) {
+        var f = document.getElementById(fieldId);
+        var e = document.getElementById(errId);
+        if (f) f.classList.toggle('error', !!msg);
+        if (e) e.textContent = msg || '';
+      }
+
+      function validate() {
+        var ok = true;
+
+        if (!val('q1')) {
+          setError('f1', 'e1', 'Please enter your name and business name.');
+          ok = false;
+        } else { setError('f1', 'e1', ''); }
+
+        if (!val('q2')) {
+          setError('f2', 'e2', 'Please select what kind of work you do.');
+          ok = false;
+        } else { setError('f2', 'e2', ''); }
+
+        if (!val('q3')) {
+          setError('f3', 'e3', 'Please select a time range.');
+          ok = false;
+        } else { setError('f3', 'e3', ''); }
+
+        if (!val('q4')) {
+          setError('f4', 'e4', 'Please describe your repetitive tasks.');
+          ok = false;
+        } else { setError('f4', 'e4', ''); }
+
+        if (!val('q7')) {
+          setError('f7', 'e7', 'Please describe the outcome you are hoping for.');
+          ok = false;
+        } else { setError('f7', 'e7', ''); }
+
+        if (!val('q8')) {
+          setError('f8', 'e8', 'Please select your package.');
+          ok = false;
+        } else { setError('f8', 'e8', ''); }
+
+        var email = val('q9');
+        if (!email || email.indexOf('@') < 1) {
+          setError('f9', 'e9', 'Please enter a valid email address.');
+          ok = false;
+        } else { setError('f9', 'e9', ''); }
+
+        return ok;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!validate()) {
+          var first = form.querySelector('.field.error');
+          if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        var tools = checkedValues('tools');
+        var priorAuto = radioValue('prior_automation');
+
+        var body = [
+          'Tilth Onboarding Questionnaire',
+          '================================',
+          '',
+          '1. Name and business: ' + val('q1'),
+          '2. Type of work: ' + val('q2'),
+          '3. Hours/week on repetitive tasks: ' + val('q3'),
+          '4. Top repetitive tasks:',
+          val('q4'),
+          '',
+          '5. Tools used: ' + (tools.length ? tools.join(', ') : 'None selected'),
+          '6. Prior automation: ' + (priorAuto || 'Not answered'),
+          (val('q6') ? '   Detail: ' + val('q6') : ''),
+          '',
+          '7. Desired outcome:',
+          val('q7'),
+          '',
+          '8. Package: ' + val('q8'),
+          '9. Contact email: ' + val('q9'),
+          '10. Anything else:',
+          (val('q10') || '(none)'),
+          '',
+          '================================',
+          'Submitted via tilth.dev/onboarding'
+        ].filter(function (l, i) {
+          // Keep all lines; remove consecutive blank-blank pairs
+          return true;
+        }).join('\n');
+
+        var subject = 'Tilth Onboarding: ' + val('q1') + ' (' + val('q8') + ')';
+
+        var mailto = 'mailto:hello@tilth.dev'
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(body);
+
+        window.location.href = mailto;
+
+        // Show success banner after a short delay
+        setTimeout(function () {
+          var banner = document.getElementById('success-banner');
+          if (banner) {
+            banner.style.display = 'block';
+            banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 800);
+      });
+
+    }());
+  </script>
+
+</body>
+</html>
